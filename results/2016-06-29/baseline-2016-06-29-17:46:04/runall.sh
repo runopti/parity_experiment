@@ -9,7 +9,7 @@ script_dir_path=$(dirname $(greadlink -f $0))
 cd $filename
 
 #th ${script_dir_path}/../../src/train_cifar.lua -batchSize 50000 -maxEpoch 500 -full -hessian -lineSearch  -currentDir ${script_dir_path}/../../src -gradNormThresh 0.1 -hessianMultiplier 1 -iterMethodDelta 10e-10 -iterationMethod lanczos -modelpath /models/cifar_mlp_10x10.lua -shrink
-python ${script_dir_path}/rnn_test_classif_graph.py --max_epoch 3 --hidden_size 2 --batch_size 1 --output_size 2 --seq_len 3 --data_size 1000
+python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 3 --hidden_size 2 --batch_size 1 --output_size 2 --seq_len 3 --data_size 1000
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -27,7 +27,7 @@ image_name="plot-`date \"+%F-%T"`.png"
 
 #th ${script_dir_path}/../../src/plot_table.lua -epochPlot -xlabel "epoch" -ylabel "accuracy" -input1 ${script_dir_path}/$filename/logs/train.csv -input2 ${script_dir_path}/$filename/logs/test.csv  -name ${image_name} --save 'img'
 
-python ${script_dir_path}/plot_table.py --num_plot 2 --save img --max_epoch 3 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 3 3
+python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 3 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 3 3
 
 
 cp ${script_dir_path}/$(basename $0) ${script_dir_path}/$(basename $0)_

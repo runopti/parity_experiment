@@ -78,6 +78,6 @@ info['end_time'] = end_time.isoformat()
 info['elapsed_time'] = str((end_time - start_time))
 info['elapsed_utime'] = str((end_utime - start_utime))
 
-with open('info.txt', 'wb') as outfile:
+with open('info.txt', 'w') as outfile:
     for key in info.keys():
         outfile.write("#%s=%s\n" % (key, str(info[key])))
