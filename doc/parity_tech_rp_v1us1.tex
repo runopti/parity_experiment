@@ -1,0 +1,271 @@
+\documentclass[fleqn,11pt]{article}
+\usepackage[pdftex,
+            pdfauthor={Uri Shaham and Yutaro Yamada},
+            pdftitle={Common Variable Discovery and Invariant Representation Learning using Artificial Neural Networks}]{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{dsfont}
+\usepackage{hyperref}
+%\usepackage{afterpage} % refined \clearpage
+\usepackage{placeins} % refined \clearpage
+%\usepackage{calrsfs}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+\usepackage[]{algorithm2e}
+%\usepackage[inline]{showlabels}
+%\usepackage{setspace} 
+%%\usepackage[top=1in, bottom=1in, left=1.3in, right=1in]{geometry}
+
+% TODO: CAPS, 
+
+%\doublespacing
+
+\usepackage{lscape}
+%\usepackage{rotating}
+
+%\usepackage{showlabels}
+%\renewcommand{\showlabelsetlabel}[1]
+%{\begin{turn}{60}\showlabelfont #1\end{turn}}
+
+
+\textwidth 450 pt
+\textheight 575 pt
+\topmargin 0 pt
+\oddsidemargin 0 pt
+\evensidemargin 0 pt
+%\mathindent 18pt
+\mathindent 72pt
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{observe}[theorem]{Observation}
+
+\newtheorem{outline}[theorem]{Outline of proof}
+
+
+\newtheorem{remark1}[theorem]{Remark}
+
+\newenvironment{observation}{\begin{observe} \rm}{\end{observe}}
+\newenvironment{remark}{\begin{remark1} \rm}{\end{remark1}}
+
+
+
+
+
+%\setcounter{tocdepth}{1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\title{I.}
+\date{}
+\author{}
+%\maketitle
+
+
+{
+\begin{titlepage}
+
+%\pagestyle{empty} % remove the page no.
+%\singlespace
+\begin{center}
+  \begin{minipage}[t]{6in}
+
+It is well known that it is extremely hard for standard feedforward neural nets to learn the parity function. However, using recurrent neural nets, observing one bit at a time, learning the parity function is a much easier task. We empirically validate this, visualise the learned memory state of the network and check how the performance is affected by various factors, such as the network architecture ,
+types of hidden units.
+
+ \vspace{ -100.0in}
+
+ \end{minipage}
+
+\end{center}
+
+%\vspace{ 4.60in}
+%\vspace{ 3.20in}
+\vspace{ 2.70in}
+
+\begin{center}
+
+  \begin{minipage}[t]{4.4in}
+
+\begin{center}
+
+
+{\Large \bf Learning the Parity Function using Recurrent Neural Networks} \\
+
+ \vspace{ 0.50in}
+
+            Yutaro Yamada$\mbox{}^{\dagger}$ and Uri Shaham$\mbox{}^{\ddagger}$, \\
+            Technical Report YALEU/DCS/TR-???? \\
+            \date{July 15, 2016}
+
+\end{center}
+
+ \vspace{ -100.0in}
+
+
+ \end{minipage}
+
+          \end{center}
+
+% \vspace{ 2.00in}
+
+
+\vfill
+
+
+\vspace{2mm}
+
+\noindent
+$\mbox{}^{\dagger}$ Department of Computer Science, Yale University, New Haven CT 06511
+
+\noindent
+$\mbox{}^{\ddagger}$ Department of Statistics, Yale University, New Haven CT 06511
+
+\vspace{5mm}
+
+\noindent
+Approved for public release: distribution is unlimited.
+
+\noindent
+{\bf Keywords:}
+{\it the parity function, recurrent neural nets }
+
+
+
+\baselineskip   21pt minus 2pt
+
+
+\vspace{0.2in}
+
+
+\baselineskip   21pt minus 2pt
+
+
+\end{titlepage}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% Introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction} \label{sec:intro}
+The parity function is defined on the set $\{0,1\}^*$ of finite binary strings and returns 1 of the sum of the bits is even and 0 otherwise. The ability of mahcine learning algorithms to learn the parity function is a long standing problem. Generally, the function is considered to be hard to learn as it very oscilatory wrt the Hamming distance - every single bit flip changes the value of the function.
+
+While several works show that the $n$-bit parity function can be \textit{represented} by fully connected neural nets  (also called Multi Layer Perceptron, or MLP) with a single hidden layer with $O(n)$ units (see, for example,~\cite{wilamowski2003solving, setiono1997solution, franco2001generalization}), actually \textit{learning} the parity function from a set of labeled examples by standard training methods is extremely difficult, and may result on a very long training time or even faliure to generalize to unseen examples. 
+
+Despite the great diffuculty of fully connected neural nets to learn the parity function, it has been observed~\cite{hochreiter1996bridging, srivastava2015training, kalchbrenner2015grid} that Recurrent Neural Nets (RNNs) can easily learn the parity function. In this context, the main difference between RNNs and MLPs is that while MLPs are given the full string as an input, RNNs observe one but at a time, and are allowed to update the states of their hidden units based on the observed bit (and the current state). Effectively, this enables RNNs to work as a 2-state automaton, depicted in Figure~\ref{fig:automaton}[[TODO: draw figure]], where the state at time $t$ corresponds to the the parity of the substring of the first $t$ bits of the string. This reduces learning the parity on arbitrarily long strings to learning it on 2-bit strings, which is an easy learning task.
+
+In this manuscript we empirically validate this, and perform a series of experiments to investigate how the quality of learning depends on various factors: the network architecture (numbers and sizes of layers), the hidden units activation function, the number of training sequences, training protocol (number of time steps, single / sequential target). We also compare between RNNs and other learning algorithms. 
+
+The structure of this manuscript is as follows: in Section~\ref{sec:rnn} we give a brief overview on RNNs. Experimental results are given in Section~\ref{sec:experiments}. Section~\ref{sec:discussion} concludes the manuscript.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% background %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section {Recurrent Neural Nets}
+\label{sec:rnn}
+A quick description of RNNs, you can use chapter 10 in Bengio's book.
+\begin{itemize}
+\item main difference from MLP: MLPs are acyclic graphs, RNNs have cycles- hidden layers are have self connections.
+\item figures: rnn with cycels, expansion in time
+\item backprop through time (i.e., how to compute gradients for RNNs)
+\item LSTM - main idea, diagram.
+\end{itemize}
+Altogether, this section should take a single page at most.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% experiments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Setup}
+decribe the experimental setup
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Visualization of Hidden Units}
+\begin{itemize}
+\item how do the activations of the hidden units change with time, how does of correspond to the parity
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dependence on the Architecture}
+\begin{itemize}
+\item number of layers
+\item number of units
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dependence on the Activations}
+\begin{itemize}
+\item LSTM vs. sigmoid / tanh units
+\item which is faster / more accurate?
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dependence on the Sample Complexity}
+\begin{itemize}
+\item performance vs. number of training sequences
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Effect of training Protocol}
+\begin{itemize}
+\item sequential targets vs. single target
+\item effect of number of time steps
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Long Range Prediction}
+\begin{itemize}
+\item quality of prediction vs. length of testing string
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comparison to other methods}
+\begin{itemize}
+\item fully connected net with various numbers and sizes of hidden layers
+\item HMM (designed for sequential data)
+\item SVM
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% discussion %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{sec:discussion}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{parity.bib}{}
+\bibliographystyle{plain}
+
+
+ \end{document}
+
+
+

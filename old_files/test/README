@@ -1,0 +1,16 @@
+To do: 
+
+2016-06-17
+- write a script for option parsing
+- experiment with a gpu 
+- understand the tutorial code
+
+- incorporate those files in test with the class files and main.py
+- note that there are lots of other scripts that I wrote in ptb folder. (/Users/yutaro/tensorflow/tensorflow/models/rnn/ptb)
+
+rnn_test_classif.py is the one that will produce correct results.
+
+2016-06-25
+
+- First I should just create a file with graphing functions as well. 
+

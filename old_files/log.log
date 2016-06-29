@@ -1,0 +1,25 @@
+2
+Traceback (most recent call last):
+  File "main_single.py", line 40, in <module>
+    m = rnn_single.RNNmodel(seq_len, target_size, hidden_size, batch_size, "entropy")
+  File "/Users/yutaro/github/nn_experiments_tensorflow/Parity-Experiment/models/rnn_single.py", line 17, in __init__
+    self.output, self.hidden_state = self._inference(self.input)
+  File "/Users/yutaro/github/nn_experiments_tensorflow/Parity-Experiment/models/rnn_single.py", line 37, in _inference
+    output = tf.matmul(cell_output[4], weights) + biases
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/ops/array_ops.py", line 167, in _SliceHelper
+    sliced = slice(tensor, indices, sizes)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/ops/array_ops.py", line 217, in slice
+    return gen_array_ops._slice(input_, begin, size, name=name)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/ops/gen_array_ops.py", line 1318, in _slice
+    name=name)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/ops/op_def_library.py", line 655, in apply_op
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 2156, in create_op
+    set_shapes_for_outputs(ret)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 1612, in set_shapes_for_outputs
+    shapes = shape_func(op)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/ops/array_ops.py", line 865, in _SliceShape
+    input_shape.assert_has_rank(ndims)
+  File "/usr/local/lib/python2.7/site-packages/tensorflow/python/framework/tensor_shape.py", line 605, in assert_has_rank
+    raise ValueError("Shape %s must have rank %d" % (self, rank))
+ValueError: Shape (1, 2) must have rank 1
