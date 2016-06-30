@@ -1,5 +1,7 @@
 import numpy as np
 
+np.random.seed(0)
+
 def createTargetData(digit_list):
     """ generate len(digit_list) vector, whose i th element is the
     corresponding parity upto the ith element of the input."""
