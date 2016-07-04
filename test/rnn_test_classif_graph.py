@@ -79,6 +79,7 @@ with tf.Graph().as_default():
     hidden_neuron1=[]
     hidden_neuron2=[]
     with tf.Session() as session:
+        saver = tf.train.Saver()
         summary_writer = tf.train.SummaryWriter("tensorflow_log", graph=session.graph)
         session.run(init_op)
         numpy_state = initial_state.eval()
@@ -119,6 +120,7 @@ with tf.Graph().as_default():
             acc_list.append(acc)
             #summary_str = session.run(summary_op, feed_dict)
             #summary_writer.add_summary(summary_str, epoch)
+        saver.save(session, "model_test.ckpt")
 
 plt.figure(figsize=(8, 8))
 plot_out = plt.plot(range(max_epoch),total_loss_list,'ro',alpha=0.3)
