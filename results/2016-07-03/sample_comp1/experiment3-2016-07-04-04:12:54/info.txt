@@ -1,0 +1,14 @@
+#script_name=rnn_test_classif_graph.py
+#option_batch_size=1
+#sys_uname=uname_result(system='Linux', node='Raphy', release='3.19.0-56-generic', version='#62~14.04.1-Ubuntu SMP Fri Mar 11 11:03:15 UTC 2016', machine='x86_64', processor='x86_64')
+#elapsed_time=0:16:33.600788
+#python_version=3.4.3
+#elapsed_utime=2618.6299999999997
+#option_output_size=2
+#option_max_epoch=600
+#start_time=2016-07-04T04:12:55.655757
+#option_seq_len=5
+#option_rseed=0
+#end_time=2016-07-04T04:29:29.256545
+#option_data_size=4000
+#option_hidden_size=3
