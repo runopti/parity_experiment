@@ -101,6 +101,13 @@ with tf.Graph().as_default():
     #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
     train_op = tf.train.AdamOptimizer(0.001).minimize(loss)
 
+    tf.add_to_collection('train_op', train_op)
+    tf.add_to_collection('output', output)
+    tf.add_to_collection('initial_state', initial_state)
+    tf.add_to_collection('data', data)
+    tf.add_to_collection('target', target)
+
+
     final_state = state
 
     summary_op = tf.merge_all_summaries()
@@ -109,6 +116,7 @@ with tf.Graph().as_default():
 
     total_loss_list = []
     acc_list = []
+    saver = tf.train.Saver()
     with tf.Session() as session:
         summary_writer = tf.train.SummaryWriter("tensorflow_log", graph=session.graph)
         session.run(init_op)
@@ -148,6 +156,7 @@ with tf.Graph().as_default():
 
             acc = calc_accuracy(100, numpy_state)
             acc_list.append(acc)
+        saver.save(session, 'my_model', global_step=0)
 
 
 import pickle

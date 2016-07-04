@@ -8,8 +8,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-#th ${script_dir_path}/../../src/train_cifar.lua -batchSize 50000 -maxEpoch 500 -full -hessian -lineSearch  -currentDir ${script_dir_path}/../../src -gradNormThresh 0.1 -hessianMultiplier 1 -iterMethodDelta 10e-10 -iterationMethod lanczos -modelpath /models/cifar_mlp_10x10.lua -shrink
-python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 600 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 4  --data_size 1000 --rseed 0
+python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 400 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 4  --data_size 1000 --rseed 0
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -27,7 +26,7 @@ image_name="plot-`date \"+%F-%T"`.png"
 
 #th ${script_dir_path}/../../src/plot_table.lua -epochPlot -xlabel "epoch" -ylabel "accuracy" -input1 ${script_dir_path}/$filename/logs/train.csv -input2 ${script_dir_path}/$filename/logs/test.csv  -name ${image_name} --save 'img'
 
-python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 600 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 600 600
+python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 400 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 400 400
 
 
 cp ${script_dir_path}/$(basename $0) ${script_dir_path}/$(basename $0)_
@@ -46,7 +45,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 900 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 5 --data_size 1000 --rseed 0
+python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 400 --hidden_size 2 --batch_size 1 --output_size 2 --seq_len 4 --data_size 1000 --rseed 0
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -55,7 +54,7 @@ mkdir img
 image_name="plot-`date \"+%F-%T"`.png" 
 
 
-python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 900 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 900 900 
+python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 400 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 400 400 
 
 
 cp ${script_dir_path}/$(basename $0) ${script_dir_path}/$(basename $0)_
@@ -74,7 +73,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 1200 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 6 --data_size 1000 --rseed 0
+python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 400 --hidden_size 3 --batch_size 1 --output_size 2 --seq_len 4 --data_size 1000 --rseed 0
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -83,7 +82,7 @@ mkdir img
 image_name="plot-`date \"+%F-%T"`.png" 
 
 
-python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 1200 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 1200 1200 
+python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 400 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 400 400 
 
 
 cp ${script_dir_path}/$(basename $0) ${script_dir_path}/$(basename $0)_
@@ -102,7 +101,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 1500 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 7 --data_size 1000 --rseed 0
+python3 ${script_dir_path}/../../src/rnn_test_classif_graph.py --max_epoch 400 --hidden_size 4 --batch_size 1 --output_size 2 --seq_len 4 --data_size 1000 --rseed 0
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -111,7 +110,7 @@ mkdir img
 image_name="plot-`date \"+%F-%T"`.png" 
 
 
-python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 1500 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 1500 1500 
+python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img --max_epoch 400 --yaxis acc_list.pickle total_loss_list.pickle --xaxis 400 400 
 
 
 cp ${script_dir_path}/$(basename $0) ${script_dir_path}/$(basename $0)_

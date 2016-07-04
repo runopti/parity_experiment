@@ -1,0 +1,14 @@
+#option_max_epoch=2
+#script_name=rnn_test_classif_graph.py
+#option_seq_len=4
+#elapsed_time=0:00:03.344340
+#option_hidden_size=1
+#end_time=2016-07-04T00:59:08.731944
+#elapsed_utime=3.62
+#python_version=3.4.3
+#sys_uname=uname_result(system='Darwin', node='yutaro-no-MBP.wireless.yale.internal', release='14.5.0', version='Darwin Kernel Version 14.5.0: Wed Jul 29 02:26:53 PDT 2015; root:xnu-2782.40.9~1/RELEASE_X86_64', machine='x86_64', processor='i386')
+#start_time=2016-07-04T00:59:05.387604
+#option_output_size=2
+#option_batch_size=1
+#option_rseed=0
+#option_data_size=1000
