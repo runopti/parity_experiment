@@ -30,6 +30,7 @@ parser.add_argument('--output_size', type=int)
 parser.add_argument('--seq_len', type=int)
 parser.add_argument('--data_size', type=int)
 parser.add_argument('--rseed', type=int)
+parser.add_argument('--lr_test', type=bool, default=False)
 
 args = parser.parse_args()
 
@@ -73,8 +74,9 @@ target_data = getData.createTargetData(input_data)
 
 with tf.Graph().as_default():
     ############## Graph construction ################
-    data = tf.placeholder(tf.float32, [batch_size, seq_len])
-    target = tf.placeholder(tf.float32, [batch_size, output_size])
+    data = tf.placeholder(tf.float32, shape=[batch_size, seq_len])
+    target = tf.placeholder(tf.float32, shape=[batch_size, output_size])
+    learning_rate = tf.placeholder(tf.float32, shape=[])
 
     lstm = tf.nn.rnn_cell.BasicRNNCell(hidden_size)
     # initialize the state
@@ -99,7 +101,7 @@ with tf.Graph().as_default():
     loss = -tf.reduce_sum(target*tf.log(output)) # this should be just 1 by 1 - 1 by 1
     tf.scalar_summary("loss", loss)
     #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
-    train_op = tf.train.AdamOptimizer(0.001).minimize(loss)
+    train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
 
     tf.add_to_collection('train_op', train_op)
     tf.add_to_collection('output', output)
@@ -136,7 +138,11 @@ with tf.Graph().as_default():
                 #print(y_target)
                 #exit()
                 #numpy_state = initial_state.eval() 
-                feed_dict={initial_state: numpy_state, data: x, target: y_target}
+                lr_value = 0.001
+                if args.lr_test == True and epoch == 180:
+                    lr_value = lr_value / 10
+
+                feed_dict={initial_state: numpy_state, data: x, target: y_target, learning_rate: lr_value}
                 numpy_state, current_loss, _, output_ = session.run([final_state, loss, train_op, output],
                         feed_dict=feed_dict)
                 total_loss += current_loss
