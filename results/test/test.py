@@ -4,5 +4,11 @@ import matplotlib.pyplot as plt
 
 import tensorflow as tf
 
-for i in range(100):
-    print(i)
+test = [i for i in range(100)]
+
+import pickle
+with open("test.pickle", "wb") as file:
+    pickle.dump(test, file)
+
+
+

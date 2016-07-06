@@ -30,6 +30,8 @@ parser.add_argument('--output_size', type=int)
 parser.add_argument('--seq_len', type=int)
 parser.add_argument('--data_size', type=int)
 parser.add_argument('--rseed', type=int)
+parser.add_argument('--lr_test', type=bool, default=False)
+parser.add_argument('--loss_diff_eps', type=float)
 
 args = parser.parse_args()
 
@@ -71,10 +73,14 @@ def calc_accuracy(n, state):
 input_data = getData.createInputData(n)
 target_data = getData.createTargetData(input_data)
 
+val_input_data = getData.createInputData(n)
+val_target_data = getData.createTargetData(val_input_data)
+
 with tf.Graph().as_default():
     ############## Graph construction ################
-    data = tf.placeholder(tf.float32, [batch_size, seq_len])
-    target = tf.placeholder(tf.float32, [batch_size, output_size])
+    data = tf.placeholder(tf.float32, shape=[batch_size, seq_len])
+    target = tf.placeholder(tf.float32, shape=[batch_size, output_size])
+    learning_rate = tf.placeholder(tf.float32, shape=[])
 
     lstm = tf.nn.rnn_cell.BasicRNNCell(hidden_size)
     # initialize the state
@@ -99,13 +105,14 @@ with tf.Graph().as_default():
     loss = -tf.reduce_sum(target*tf.log(output)) # this should be just 1 by 1 - 1 by 1
     tf.scalar_summary("loss", loss)
     #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
-    train_op = tf.train.AdamOptimizer(0.001).minimize(loss)
+    train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
 
     tf.add_to_collection('train_op', train_op)
     tf.add_to_collection('output', output)
     tf.add_to_collection('initial_state', initial_state)
     tf.add_to_collection('data', data)
     tf.add_to_collection('target', target)
+
 
     final_state = state
 
@@ -120,7 +127,13 @@ with tf.Graph().as_default():
         summary_writer = tf.train.SummaryWriter("tensorflow_log", graph=session.graph)
         session.run(init_op)
         numpy_state = initial_state.eval()
-        for epoch in range(max_epoch):
+        # for epoch in range(max_epoch):
+        epoch = 0
+        while new_val_loss - old_val_loss > args.diff_loss_eps:
+            epoch += 1
+            if epoch == max_epoch: 
+                print("max epoch reached. break the loop:")
+                break
             total_loss = 0
             for step, (x,y) in enumerate(reader.parity_iterator(input_data,target_data,batch_size, seq_len)):
                 #print([y[0][-1]])
@@ -135,7 +148,11 @@ with tf.Graph().as_default():
                 #print(y_target)
                 #exit()
                 #numpy_state = initial_state.eval() 
-                feed_dict={initial_state: numpy_state, data: x, target: y_target}
+                lr_value = 0.001
+                if args.lr_test == True and epoch == 180:
+                    lr_value = lr_value / 10
+
+                feed_dict={initial_state: numpy_state, data: x, target: y_target, learning_rate: lr_value}
                 numpy_state, current_loss, _, output_ = session.run([final_state, loss, train_op, output],
                         feed_dict=feed_dict)
                 total_loss += current_loss
@@ -155,6 +172,17 @@ with tf.Graph().as_default():
 
             acc = calc_accuracy(100, numpy_state)
             acc_list.append(acc)
+
+            # validation (for termination criteria)
+            val_total_loss = 0
+            num_total_steps = 0
+            for step_val, (val_x,val_y) in enumerate(reader.parity_iterator(val_input_data,val_target_data,batch_size, seq_len)):
+                val_loss = session.run([loss], feed_dict={initial_state: numpy_state, data: val_x, target: val_y, learning_rate: 0.0}
+                val_total_loss += val_loss
+                num_total_steps += 1
+            old_val_loss = new_val_loss
+            new_val_loss = 1.0 * loss / num_total_steps
+            
         saver.save(session, 'my_model', global_step=0)
 
 
