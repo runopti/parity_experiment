@@ -32,6 +32,8 @@ parser.add_argument('--data_size', type=int)
 parser.add_argument('--rseed', type=int)
 parser.add_argument('--lr_test', type=bool, default=False)
 parser.add_argument('--loss_diff_eps', type=float)
+parser.add_argument('--grad_clip', type=bool)
+parser.add_argument('--max_grad_norm', type=float)
 
 args = parser.parse_args()
 
@@ -105,7 +107,14 @@ with tf.Graph().as_default():
     loss = -tf.reduce_sum(target*tf.log(output)) # this should be just 1 by 1 - 1 by 1
     tf.scalar_summary("loss", loss)
     #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
-    train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
+    if args.grad_clip:
+        tvars = tf.trainable_variables()
+        grads, _ = tf.clip_by_global_norm(tf.gradients(loss, tvars), args.max_grad_norm)
+        #optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+        train_op = optimizer.apply_gradients(zip(grads, tvars))
+    else:
+        train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
 
     tf.add_to_collection('train_op', train_op)
     tf.add_to_collection('output', output)

@@ -1,0 +1,3 @@
+The loss curve with SGD is amazingly bad. 
+I didn't realize until now that Adam was such a big thing in RNN? 
+Or maybe it just suits for this parity task?
