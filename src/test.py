@@ -122,6 +122,7 @@ with tf.Graph().as_default():
 
     total_loss_list = []
     acc_list = []
+    loss_diff_list = []
     saver = tf.train.Saver()
     with tf.Session() as session:
         summary_writer = tf.train.SummaryWriter("tensorflow_log", graph=session.graph)
@@ -129,7 +130,8 @@ with tf.Graph().as_default():
         numpy_state = initial_state.eval()
         # for epoch in range(max_epoch):
         epoch = 0
-        while new_val_loss - old_val_loss > args.diff_loss_eps:
+        old_val_loss = 1; new_val_loss = 2*old_val_loss
+        while abs(new_val_loss - old_val_loss) > args.loss_diff_eps:
             epoch += 1
             if epoch == max_epoch: 
                 print("max epoch reached. break the loop:")
@@ -179,11 +181,19 @@ with tf.Graph().as_default():
             val_total_loss = 0
             num_total_steps = 0
             for step_val, (val_x,val_y) in enumerate(reader.parity_iterator(val_input_data,val_target_data,batch_size, seq_len)):
-                val_loss = session.run([loss], feed_dict={initial_state: numpy_state, data: val_x, target: val_y, learning_rate: 0.0}
-                val_total_loss += val_loss
+                val_y = getData.createTargetData(x[0])[-1] 
+                val_y_target = np.zeros((1,2))
+                if val_y == 0: val_y_target[0][0] = 1 
+                else: val_y_target[0][1] = 1
+                val_loss = session.run([loss], feed_dict={initial_state: numpy_state, data: val_x, target: val_y_target, learning_rate: 0.0})
+                val_total_loss += val_loss[0]
                 num_total_steps += 1
             old_val_loss = new_val_loss
-            new_val_loss = 1.0 * loss / num_total_steps
+            new_val_loss = 1.0 * val_total_loss / num_total_steps
+            print("printing diff")
+            print(new_val_loss - old_val_loss)
+            loss_diff_list.append(new_val_loss - old_val_loss)
+            
             
         saver.save(session, 'my_model', global_step=0)
 
@@ -194,6 +204,8 @@ with open('total_loss_list.pickle', 'wb') as f:
 
 with open('acc_list.pickle', 'wb') as f:
     pickle.dump(acc_list, f)
+with open('loss_diff_list.pickle', 'wb') as f:
+    pickle.dump(loss_diff_list, f)
 
 end_time = datetime.datetime.now()
 end_utime = os.times()[0]                                                                                                                                                          

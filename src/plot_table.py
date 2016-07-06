@@ -19,7 +19,7 @@ parser.add_argument('--yaxis', nargs=int(sys.argv[2]), type=str)
 
 args = parser.parse_args()
 
-max_epoch = args.max_epoch
+#max_epoch = args.max_epoch
 
 plot_list = []
 for i in range(num_plot):
@@ -28,7 +28,7 @@ for i in range(num_plot):
 
 for i in range(num_plot):
     plt.figure(figsize=(8, 8)) 
-    plot_out = plt.plot(range(len(plot_list)), plot_list[i] ,'ro',alpha=0.3)
+    plot_out = plt.plot(range(len(plot_list[i])), plot_list[i] ,'ro',alpha=0.3)
     #plt.show()
     image_file = args.save + '/' + args.yaxis[i].split('.')[0] # taking the name before 'dot' pickle 
     plt.savefig(image_file + ".png")
