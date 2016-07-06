@@ -1,7 +1,7 @@
 #!/bin/sh
 ## Experiment 3
 
-filename="grad_clip_test-`date \"+%F-%T"`" # will output something like 2016-03-13-17:35:11
+filename="auto_stop_test-`date \"+%F-%T"`" # will output something like 2016-03-13-17:35:11
 
 mkdir $filename
 
@@ -9,7 +9,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/test.py --max_epoch 800 --hidden_size 3 --batch_size 1 --output_size 2 --seq_len 5 --data_size 2000 --rseed 0 --loss_diff_eps 1e-7 --grad_clip True --max_grad_norm 5
+python3 ${script_dir_path}/../../src/test.py --max_epoch 800 --hidden_size 3 --batch_size 1 --output_size 2 --seq_len 5 --data_size 2000 --rseed 0 --loss_diff_eps 1e-5
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -18,7 +18,7 @@ mkdir img
 image_name="plot-`date \"+%F-%T"`.png" 
 
 
-python3 ${script_dir_path}/../../src/plot_table.py --num_plot 3 --save img  --yaxis acc_list.pickle total_loss_list.pickle loss_diff_list.pickle 
+python3 ${script_dir_path}/../../src/plot_table.py --num_plot 2 --save img  --yaxis acc_list.pickle total_loss_list.pickle 
 
 
 cp ${script_dir_path}/$(basename $0) ${script_dir_path}/$(basename $0)_

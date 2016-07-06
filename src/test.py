@@ -32,6 +32,8 @@ parser.add_argument('--data_size', type=int)
 parser.add_argument('--rseed', type=int)
 parser.add_argument('--lr_test', type=bool, default=False)
 parser.add_argument('--loss_diff_eps', type=float)
+parser.add_argument('--grad_clip', type=bool)
+parser.add_argument('--max_grad_norm', type=float)
 
 args = parser.parse_args()
 
@@ -105,7 +107,14 @@ with tf.Graph().as_default():
     loss = -tf.reduce_sum(target*tf.log(output)) # this should be just 1 by 1 - 1 by 1
     tf.scalar_summary("loss", loss)
     #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
-    train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
+    if args.grad_clip:
+        tvars = tf.trainable_variables()
+        grads, _ = tf.clip_by_global_norm(tf.gradients(loss, tvars), args.max_grad_norm)
+        #optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+        train_op = optimizer.apply_gradients(zip(grads, tvars))
+    else:
+        train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
 
     tf.add_to_collection('train_op', train_op)
     tf.add_to_collection('output', output)
@@ -122,6 +131,7 @@ with tf.Graph().as_default():
 
     total_loss_list = []
     acc_list = []
+    loss_diff_list = []
     saver = tf.train.Saver()
     with tf.Session() as session:
         summary_writer = tf.train.SummaryWriter("tensorflow_log", graph=session.graph)
@@ -129,7 +139,8 @@ with tf.Graph().as_default():
         numpy_state = initial_state.eval()
         # for epoch in range(max_epoch):
         epoch = 0
-        while new_val_loss - old_val_loss > args.diff_loss_eps:
+        old_val_loss = 1; new_val_loss = 2*old_val_loss
+        while abs(new_val_loss - old_val_loss) > args.loss_diff_eps:
             epoch += 1
             if epoch == max_epoch: 
                 print("max epoch reached. break the loop:")
@@ -179,11 +190,19 @@ with tf.Graph().as_default():
             val_total_loss = 0
             num_total_steps = 0
             for step_val, (val_x,val_y) in enumerate(reader.parity_iterator(val_input_data,val_target_data,batch_size, seq_len)):
-                val_loss = session.run([loss], feed_dict={initial_state: numpy_state, data: val_x, target: val_y, learning_rate: 0.0}
-                val_total_loss += val_loss
+                val_y = getData.createTargetData(x[0])[-1] 
+                val_y_target = np.zeros((1,2))
+                if val_y == 0: val_y_target[0][0] = 1 
+                else: val_y_target[0][1] = 1
+                val_loss = session.run([loss], feed_dict={initial_state: numpy_state, data: val_x, target: val_y_target, learning_rate: 0.0})
+                val_total_loss += val_loss[0]
                 num_total_steps += 1
             old_val_loss = new_val_loss
-            new_val_loss = 1.0 * loss / num_total_steps
+            new_val_loss = 1.0 * val_total_loss / num_total_steps
+            print("printing diff")
+            print(new_val_loss - old_val_loss)
+            loss_diff_list.append(new_val_loss - old_val_loss)
+            
             
         saver.save(session, 'my_model', global_step=0)
 
@@ -194,6 +213,8 @@ with open('total_loss_list.pickle', 'wb') as f:
 
 with open('acc_list.pickle', 'wb') as f:
     pickle.dump(acc_list, f)
+with open('loss_diff_list.pickle', 'wb') as f:
+    pickle.dump(loss_diff_list, f)
 
 end_time = datetime.datetime.now()
 end_utime = os.times()[0]                                                                                                                                                          

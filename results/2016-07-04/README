@@ -1,5 +1,6 @@
 [1] 2652
 lr_test.sh  checking if the weird loss can be mitigatd by learning rate schdule 
 
+[1] [1] 7072
 data_load_test.sh  test shell script for data loading from outside, instead of making it on the fly
 
