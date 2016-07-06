@@ -126,18 +126,10 @@ with tf.Graph().as_default():
         for epoch in range(max_epoch):
             total_loss = 0
             for step, (x,y) in enumerate(reader.parity_iterator(input_data,target_data,batch_size, seq_len)):
-                #print([y[0][-1]])
-                #exit()
-                #print(x[0])
                 y = getData.createTargetData(x[0])[-1]
                 y_target = np.zeros((1,2))
-                #print(y_target)
-                #print(y)
                 if y == 0: y_target[0][0] = 1
                 else: y_target[0][1] = 1
-                #print(y_target)
-                #exit()
-                #numpy_state = initial_state.eval() 
                 lr_value = 0.001
                 if args.lr_test == True and epoch == 180:
                     lr_value = lr_value / 10
