@@ -135,7 +135,9 @@ with tf.Graph().as_default():
                 print("max epoch reached. break the loop:")
                 break
             total_loss = 0
+            step_count = 0
             for step, (x,y) in enumerate(reader.parity_iterator(input_data,target_data,batch_size, seq_len)):
+                step_count += 1
                 #print([y[0][-1]])
                 #exit()
                 #print(x[0])
@@ -167,8 +169,8 @@ with tf.Graph().as_default():
                 #    summary_writer.add_summary(summary_str, step)
 
                     #print(current_loss)
-            print(total_loss)
-            total_loss_list.append(total_loss)
+            print(1.0 * total_loss / step_count)
+            total_loss_list.append(1.0 * total_loss / step_count)
 
             acc = calc_accuracy(100, numpy_state)
             acc_list.append(acc)
