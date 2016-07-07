@@ -143,6 +143,7 @@ with tf.Graph().as_default():
     tf.add_to_collection('initial_state', initial_state)
     tf.add_to_collection('data', data)
     tf.add_to_collection('target', target)
+    tf.add_to_collection('state', state)
 
 
     final_state = state
