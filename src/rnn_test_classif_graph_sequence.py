@@ -32,10 +32,6 @@ parser.add_argument('--data_size', type=int)
 parser.add_argument('--rseed', type=int)
 parser.add_argument('--lr_test', type=bool, default=False)
 parser.add_argument('--loss_diff_eps', type=float)
-parser.add_argument('--grad_clip', type=bool)
-parser.add_argument('--max_grad_norm', type=float)
-parser.add_argument('--train_method', type=str)
-
 
 args = parser.parse_args()
 
@@ -65,7 +61,7 @@ def calc_accuracy(n, state):
         y_target = np.zeros((1,2))
         if y == 0: y_target[0][0] = 1
         else: y_target[0][1] = 1
-        feed_dict={initial_state: state, data:x}
+        feed_dict={initial_state: state, data:x, target: y_target}
         output_ = session.run(output, feed_dict=feed_dict)
         #print(np.argmax(y_target))
         #print(np.argmax(output_))
@@ -83,11 +79,7 @@ val_target_data = getData.createTargetData(val_input_data)
 with tf.Graph().as_default():
     ############## Graph construction ################
     data = tf.placeholder(tf.float32, shape=[batch_size, seq_len])
-    if args.train_method == "single":
-        target = tf.placeholder(tf.float32, shape=[batch_size, output_size])
-    else:
-        target = tf.placeholder(tf.float32, shape=[seq_len, batch_size, output_size])
-        target_list = [tf.squeeze(tf.slice(target, [i,0,0], [1, batch_size, output_size])) for i in range(seq_len)]
+    target = tf.placeholder(tf.float32, shape=[batch_size, output_size])
     learning_rate = tf.placeholder(tf.float32, shape=[])
 
     lstm = tf.nn.rnn_cell.BasicRNNCell(hidden_size)
@@ -109,34 +101,21 @@ with tf.Graph().as_default():
             biases = tf.Variable(tf.truncated_normal([output_size], stddev=1.0/math.sqrt(float(hidden_size)), name="biases"))
             output = tf.nn.softmax(tf.matmul(cell_output, weights) + biases)  # the size of output should be just [batch_size, 1] right?
             #output = tf.reshape(output, [1,2])
-        if args.train_method == "single":                                                
-            pass
-        else:
-            # target has to be shape=[seq_len * [1,2]]
-            loss_per_digit = -tf.reduce_sum(target_list[i]*tf.log(output)) # this should be just 1 by 1 - 1 by 1            
-            if args.grad_clip:
-                tvars = tf.trainable_variables()
-                grads, _ = tf.clip_by_global_norm(tf.gradients(loss_per_digit, tvars), args.max_grad_norm)
-                optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
-                train_op = optimizer.apply_gradients(zip(grads, tvars))
+            if args.train_method == "single":
+                pass
             else:
-                train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss)
+                # target has to be shape=[seq_len * [1,2]]
+                loss_per_digit = -tf.reduce_sum(target*tf.log(output)) # this should be just 1 by 1 - 1 by 1
 
+                
+                
     if args.train_method == "single":
         loss = -tf.reduce_sum(target*tf.log(output)) # this should be just 1 by 1 - 1 by 1
-        tf.scalar_summary("loss", loss)
-        #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
-        if args.grad_clip:
-            tvars = tf.trainable_variables()
-            grads, _ = tf.clip_by_global_norm(tf.gradients(loss, tvars), args.max_grad_norm)
-            #optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
-            optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
-            train_op = optimizer.apply_gradients(zip(grads, tvars))
-        else:
-            train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
-    else:
-        loss = tf.identity(loss_per_digit)
-    
+    else: 
+        pass
+    tf.scalar_summary("loss", loss)
+    #train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+    train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(loss) # 0.001
 
     tf.add_to_collection('train_op', train_op)
     tf.add_to_collection('output', output)
@@ -174,13 +153,10 @@ with tf.Graph().as_default():
                 if args.train_method == "single":
                     y = getData.createTargetData(x[0])[-1]
                     y_target = np.zeros((1,2))
-                    if y == 0: y_target[0][0] = 1 
-                    else: y_target[0][1] = 1 
-                else:    # y_target needs to be shape=[num_seq * [batch_size, output_size]
-                    y_target = np.zeros((seq_len, 1, 2))
-                    for i in range(seq_len):
-                        if y[0][i] == 0: y_target[i][0][0] = 1
-                        else: y_target[i][0][1] = 1
+                    if y == 0: y_target[0][0] = 1
+                    else: y_target[0][1] = 1
+                else:
+                    y_target = y
                 lr_value = 0.001
                 if args.lr_test == True and epoch == 180:
                     lr_value = lr_value / 10
@@ -215,11 +191,8 @@ with tf.Graph().as_default():
                     val_y_target = np.zeros((1,2))
                     if val_y == 0: val_y_target[0][0] = 1 
                     else: val_y_target[0][1] = 1
-                else:
-                    val_y_target = np.zeros((seq_len, 1, 2))
-                    for i in range(seq_len):
-                        if val_y[0][i] == 0: val_y_target[i][0][0] = 1
-                        else: val_y_target[i][0][1] = 1
+                else: # using full target 
+                    val_y_target = val_y
                 val_loss = session.run([loss], feed_dict={initial_state: numpy_state, data: val_x, target: val_y_target, learning_rate: 0.0})
                 val_total_loss += val_loss[0]
                 num_total_steps += 1
