@@ -4,3 +4,6 @@ get model for hidden vis. Hidden unit is 1.
 
 [1] 28770
 loss_diff 1e-8
+
+[1] 29100
+loss_diff 1e-9
