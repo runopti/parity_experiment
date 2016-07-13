@@ -7,3 +7,7 @@ seq_len 15
 seq_len 15 didn't really learn because the update only happens after seeing 15 digits. 
 So now I'm testing it with total.
 
+[1] 32311
+The above total didn't really work when #hidden units is small. So I'm doing it with #hiddenunits=4 to 8. 
+I also decreased lr by 10 after around 180epoch.
+
