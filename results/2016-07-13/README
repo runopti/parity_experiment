@@ -1,0 +1,6 @@
+[1] 28616
+get model for hidden vis. Hidden unit is 1. 
+-> loss_diff 1e-7 was too big.
+
+[1] 28770
+loss_diff 1e-8
