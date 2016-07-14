@@ -1,0 +1,19 @@
+#option_loss_diff_eps=1e-08
+#option_train_method=total
+#option_max_grad_norm=5.0
+#option_batch_size=1
+#option_data_size=4000
+#end_time=2016-07-13T20:19:52.410010
+#option_lr_test=True
+#option_grad_clip=True
+#elapsed_time=0:02:46.351815
+#script_name=rnn_simple.py
+#option_max_epoch=800
+#start_time=2016-07-13T20:17:06.058195
+#option_seq_len=15
+#python_version=3.4.3
+#elapsed_utime=414.48
+#option_hidden_size=1
+#sys_uname=uname_result(system='Linux', node='Raphy', release='3.19.0-56-generic', version='#62~14.04.1-Ubuntu SMP Fri Mar 11 11:03:15 UTC 2016', machine='x86_64', processor='x86_64')
+#option_rseed=0
+#option_output_size=2

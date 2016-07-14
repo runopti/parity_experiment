@@ -9,7 +9,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 0  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True --cell_type "lstm"
+python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 0  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -37,7 +37,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 1  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True --cell_type "lstm"
+python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 2 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 0  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -66,7 +66,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 2  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True --cell_type "lstm"
+python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 3 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 0  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -95,7 +95,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 3  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True --cell_type "lstm"
+python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 4 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 0  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True 
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 
@@ -124,7 +124,7 @@ script_dir_path=$(dirname $(readlink -f $0))
 
 cd $filename
 
-python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 1 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 4  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True --cell_type "lstm"
+python3 ${script_dir_path}/../../src/rnn_simple.py --max_epoch 800 --hidden_size 5 --batch_size 1 --output_size 2 --seq_len 15 --data_size 4000 --rseed 0  --loss_diff_eps 1e-8 --grad_clip True --max_grad_norm 5 --train_method "total" --lr_test True 
 # passing the right path to train_mnist.lua using ${script_dir_path} which is the current directory where 
 # this runall.sh is located.
 

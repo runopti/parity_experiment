@@ -11,3 +11,7 @@ So now I'm testing it with total.
 The above total didn't really work when #hidden units is small. So I'm doing it with #hiddenunits=4 to 8. 
 I also decreased lr by 10 after around 180epoch.
 
+[1] 1617
+
+[1] 3694
+First test with lstm because I think the reason why it's not learning is the gradient vanishing/exploding
