@@ -1,2 +1,48 @@
 [1] 5337
 LSTM with different seeds.
+seq_len15_lstm_seed_diff    -> shitty results.
+
+[1] 6330
+run_test.sh
+
+[1] 6623
+run_test.sh with hiddenunit 10
+
+[1] 7169
+learninf rate test: 0.01
+
+[1][1] 7516 
+got stuck with gradient clip 
+
+
+[1] 7986
+hiddenuni
+
+[1] 8316
+hiddenuni No.2. Grad clip is now 10.
+The loss graph of Hidden_test-2016-07-14-11:21:03 -> zigzag. The model periodically "forgets" what it has learned.
+
+[1] 8663 Hidden_test-2016-07-14-12:21:33
+Increased lr. The same setting as above otherwise.
+
+[1] 8972 Hidden_test-2016-07-14-12:49:36
+Increased hid_unit from 10 to 20. Lr is back to 0.01 b/c 0.1 didn't decrease the loss at all. 
+- the loss still exploded after 400epochs but decreased most among all the other experiments.
+- Let's just do another experiment with hidden 30 and then
+- investigate the cause of this explosion. (probably learning rate)
+
+[1] 9235  Hidden_test-2016-07-14-13:09:55
+Increased hid_unit from 20 to 30. Just set maxepoch 400 to make it shorter.
+- didn't really change.
+
+NOTES: Can't we train our model on short sequences (just to learn the switch thing)
+and see if it is generalizable to a longer sequence on test phases?
+
+[1] 9529 Short_seq-2016-07-14-13:25:18
+seqlen = 4, hidden = 5. Just want to get a model that is trained on short sequences.
+Hope this model is generaizable to longer sequences.
+- From the look of acc_list.png, it seems the model overfits, so I want to do an early-stopping in the next try.
+
+[1] 9788
+maxepoch = 250. The same setting otherwise as above.
+- Looks good. Now let's test this on long sequences.

@@ -35,8 +35,6 @@ parser.add_argument('--loss_diff_eps', type=float)
 parser.add_argument('--grad_clip', type=bool)
 parser.add_argument('--max_grad_norm', type=float)
 parser.add_argument('--train_method', type=str)
-parser.add_argument('--cell_type', type=str, default='basic')
-parser.add_argument('--learning_rate', type=float, default=0.001)
 
 
 args = parser.parse_args()
@@ -92,16 +90,10 @@ with tf.Graph().as_default():
         target_list = [tf.squeeze(tf.slice(target, [i,0,0], [1, batch_size, output_size])) for i in range(seq_len)]
     learning_rate = tf.placeholder(tf.float32, shape=[])
 
-    # define cell and initialize the cell state
-    if args.cell_type == 'basic':
-        rnn_cell = tf.nn.rnn_cell.BasicRNNCell(hidden_size)
-        initial_state = state = tf.zeros([batch_size, hidden_size])
-    elif args.cell_type == 'lstm':
-        rnn_cell = tf.nn.rnn_cell.BasicLSTMCell(hidden_size)
-        initial_state = state = tf.zeros([batch_size, 2*hidden_size])
-    else:
-        print("Error: Define cell_type")
-    
+    #rnn_cell = tf.nn.rnn_cell.BasicRNNCell(hidden_size)
+    rnn_cell = tf.nn.rnn_cell.BasicLSTMCell(2*hidden_size)
+    # initialize the state
+    initial_state = state = tf.zeros([batch_size, 2*hidden_size])
     if args.train_method != "single":
         loss = tf.constant(0.0)
     for i in range(seq_len):
@@ -187,7 +179,7 @@ with tf.Graph().as_default():
                     for i in range(seq_len):
                         if y[0][i] == 0: y_target[i][0][0] = 1
                         else: y_target[i][0][1] = 1
-                lr_value = args.learning_rate #0.001
+                lr_value = 0.001
                 if args.lr_test == True and epoch == 180:
                     lr_value = lr_value / 10
 
