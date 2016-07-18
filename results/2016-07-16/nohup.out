@@ -1,0 +1,1540 @@
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcuda.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally
+WARNING:tensorflow:<tensorflow.python.ops.rnn_cell.BasicLSTMCell object at 0x7f03c0cc2c50>: Using a concatenated state is slower and will soon be deprecated.  Use state_is_tuple=True.
+I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:924] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:102] Found device 0 with properties: 
+name: GeForce GTX 660
+major: 3 minor: 0 memoryClockRate (GHz) 1.0975
+pciBusID 0000:01:00.0
+Total memory: 2.00GiB
+Free memory: 1.63GiB
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:126] DMA: 0 
+I tensorflow/core/common_runtime/gpu/gpu_init.cc:136] 0:   Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:806] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 660, pci bus id: 0000:01:00.0)
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:244] PoolAllocator: After 2059 get requests, put_count=1850 evicted_count=1000 eviction_rate=0.540541 and unsatisfied allocation rate=0.635746
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:256] Raising pool_size_limit_ from 100 to 110
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:244] PoolAllocator: After 2748 get requests, put_count=2783 evicted_count=1000 eviction_rate=0.359324 and unsatisfied allocation rate=0.359534
+I tensorflow/core/common_runtime/gpu/pool_allocator.cc:256] Raising pool_size_limit_ from 256 to 281
+500
+[[ 9.0057497]]
+printing diff
+[[ 7.16334534]]
+[[ 8.99629879]]
+printing diff
+[[-0.13448429]]
+[[ 8.98845005]]
+printing diff
+[[-0.02919483]]
+[[ 8.98639488]]
+printing diff
+[[-0.03087234]]
+[[ 8.98169613]]
+printing diff
+[[-0.02599716]]
+[[ 8.98549747]]
+printing diff
+[[ 0.16795921]]
+[[ 8.98653984]]
+printing diff
+[[-0.05718994]]
+[[ 8.95977116]]
+printing diff
+[[-0.13779736]]
+[[ 8.97651482]]
+printing diff
+[[ 0.00449657]]
+[[ 8.98366356]]
+printing diff
+[[ 0.00956249]]
+[[ 8.95887947]]
+printing diff
+[[-0.05349445]]
+[[ 8.97600555]]
+printing diff
+[[-0.00018501]]
+[[ 8.99139214]]
+printing diff
+[[ 0.17731571]]
+[[ 8.99197006]]
+printing diff
+[[-0.06806564]]
+[[ 9.02102661]]
+printing diff
+[[-0.01086712]]
+[[ 9.01285362]]
+printing diff
+[[ 0.04112339]]
+[[ 8.97864819]]
+printing diff
+[[-0.10592747]]
+[[ 8.98295975]]
+printing diff
+[[ 0.23351097]]
+[[ 8.9981842]]
+printing diff
+[[-0.31477451]]
+[[ 9.04330826]]
+printing diff
+[[-0.43238354]]
+[[ 8.99117756]]
+printing diff
+[[-0.76196289]]
+[[ 10.48696423]]
+printing diff
+[[-4.80837631]]
+[[ 11.26809025]]
+printing diff
+[[ 25.88178635]]
+[[ 13.32287407]]
+printing diff
+[[-19.44532013]]
+[[ 9.08239174]]
+printing diff
+[[-0.20317554]]
+[[ 8.9868021]]
+printing diff
+[[ 0.15808868]]
+[[ 8.97423744]]
+printing diff
+[[-0.32458782]]
+[[ 8.97001743]]
+printing diff
+[[ 0.03215694]]
+[[ 9.06940365]]
+printing diff
+[[ 0.02456284]]
+[[ 9.04135227]]
+printing diff
+[[-0.51196766]]
+[[ 9.02386284]]
+printing diff
+[[ 0.32928944]]
+[[ 9.01643562]]
+printing diff
+[[ 0.0967207]]
+[[ 9.00909042]]
+printing diff
+[[ 0.08473396]]
+[[ 9.05495071]]
+printing diff
+[[ 0.15858173]]
+[[ 9.07071209]]
+printing diff
+[[-0.10213947]]
+[[ 9.06955338]]
+printing diff
+[[ 0.13534737]]
+[[ 9.04911995]]
+printing diff
+[[-0.16361427]]
+[[ 9.00571251]]
+printing diff
+[[-0.04493332]]
+[[ 9.05536556]]
+printing diff
+[[ 0.13510704]]
+[[ 9.12556362]]
+printing diff
+[[ 0.13337231]]
+[[ 9.11248493]]
+printing diff
+[[-0.13636398]]
+[[ 9.0783186]]
+printing diff
+[[-0.82581425]]
+[[ 10.46673489]]
+printing diff
+[[ 13.48309517]]
+[[ 13.19491863]]
+printing diff
+[[-6.34745407]]
+[[ 15.15904045]]
+printing diff
+[[ 18.63449287]]
+[[ 16.78444099]]
+printing diff
+[[-3.70755959]]
+[[ 15.61591911]]
+printing diff
+[[ 0.73860741]]
+[[ 16.61357498]]
+printing diff
+[[ 9.26446152]]
+[[ 15.78070831]]
+printing diff
+[[-5.12289047]]
+[[ 16.78540039]]
+printing diff
+[[ 0.78696823]]
+[[ 17.33991051]]
+printing diff
+[[-3.52864075]]
+[[ 16.76756477]]
+printing diff
+[[-2.13269043]]
+[[ 14.88247204]]
+printing diff
+[[-1.37509727]]
+[[ 14.45376873]]
+printing diff
+[[-6.39330864]]
+[[ 14.46320152]]
+printing diff
+[[-0.92422867]]
+[[ 13.46491337]]
+printing diff
+[[ 8.11871529]]
+[[ 15.38858986]]
+printing diff
+[[-5.08838844]]
+[[ 14.89600754]]
+printing diff
+[[ 10.7154274]]
+[[ 15.944314]]
+printing diff
+[[-6.55828667]]
+[[ 15.9614172]]
+printing diff
+[[-12.34684753]]
+[[ 13.29363251]]
+printing diff
+[[-9.54021645]]
+[[ 11.90693569]]
+printing diff
+[[ 20.58558464]]
+[[ 13.03417397]]
+printing diff
+[[-26.76565552]]
+[[ 15.61328316]]
+printing diff
+[[ 0.20772308]]
+[[ 13.48484039]]
+printing diff
+[[ 12.10793209]]
+[[ 11.9839201]]
+printing diff
+[[-5.67262459]]
+[[ 9.44855213]]
+printing diff
+[[ 0.5111084]]
+[[ 9.49267578]]
+printing diff
+[[ 4.42044735]]
+[[ 11.52849007]]
+printing diff
+[[-5.33294249]]
+[[ 10.91670418]]
+printing diff
+[[ 1.00743151]]
+[[ 10.19113922]]
+printing diff
+[[ 0.45450306]]
+[[ 9.2780714]]
+printing diff
+[[-0.50136185]]
+[[ 10.37686539]]
+printing diff
+[[ 0.26008797]]
+[[ 9.78025627]]
+printing diff
+[[-1.82313347]]
+[[ 10.4420948]]
+printing diff
+[[ 5.56662846]]
+[[ 13.65032673]]
+printing diff
+[[-2.05148506]]
+[[ 11.20177937]]
+printing diff
+[[-2.39488029]]
+[[ 12.62667465]]
+printing diff
+[[ 6.32048225]]
+[[ 14.4739151]]
+printing diff
+[[ 3.25532818]]
+[[ 13.59758949]]
+printing diff
+[[ 0.19432831]]
+[[ 11.78380394]]
+printing diff
+[[-12.3315239]]
+[[ 13.96728516]]
+printing diff
+[[ 21.79857254]]
+[[ 12.05392075]]
+printing diff
+[[-14.25955868]]
+[[ 14.41307259]]
+printing diff
+[[-5.83376312]]
+[[ 12.60307789]]
+printing diff
+[[ 0.84017467]]
+[[ 11.12131691]]
+printing diff
+[[ 0.62962055]]
+[[ 10.5220108]]
+printing diff
+[[-2.87127209]]
+[[ 10.95819187]]
+printing diff
+[[ 8.06383896]]
+[[ 10.92096043]]
+printing diff
+[[-5.21272755]]
+[[ 13.37878704]]
+printing diff
+[[ 10.35725689]]
+[[ 13.22544098]]
+printing diff
+[[-1.82613945]]
+[[ 12.07203388]]
+printing diff
+[[-7.40554619]]
+[[ 12.28451252]]
+printing diff
+[[ 0.83113861]]
+[[ 11.78979111]]
+printing diff
+[[-4.8962307]]
+[[ 11.83915901]]
+printing diff
+[[ 2.46712208]]
+[[ 11.73823166]]
+printing diff
+[[ 0.58472061]]
+[[ 11.22218895]]
+printing diff
+[[ 3.66380501]]
+[[ 11.60417652]]
+printing diff
+[[-2.63848495]]
+[[ 13.34125519]]
+printing diff
+[[ 1.01903248]]
+[[ 12.02099419]]
+printing diff
+[[-4.70123243]]
+[[ 11.53377914]]
+printing diff
+[[ 2.07257795]]
+[[ 11.53128147]]
+printing diff
+[[ 0.39239311]]
+[[ 12.50403118]]
+printing diff
+[[ 2.83235455]]
+[[ 12.57788658]]
+printing diff
+[[-3.63918304]]
+[[ 12.42299938]]
+printing diff
+[[-0.1493845]]
+[[ 11.65231991]]
+printing diff
+[[-0.69829988]]
+[[ 11.19719887]]
+printing diff
+[[-0.46001148]]
+[[ 11.56703281]]
+printing diff
+[[ 2.09355021]]
+[[ 12.37320995]]
+printing diff
+[[ 0.63412189]]
+[[ 13.75000095]]
+printing diff
+[[ 13.32234764]]
+[[ 13.4598608]]
+printing diff
+[[-10.55893993]]
+[[ 12.7980175]]
+printing diff
+[[-1.18649387]]
+[[ 14.111413]]
+printing diff
+[[-7.07680416]]
+[[ 14.7438364]]
+printing diff
+[[ 5.52530193]]
+[[ 15.81912041]]
+printing diff
+[[-3.48028851]]
+[[ 15.39566898]]
+printing diff
+[[ 11.72118664]]
+[[ 15.36318493]]
+printing diff
+[[-7.95032883]]
+[[ 14.65230656]]
+printing diff
+[[ 6.52015972]]
+[[ 15.17726898]]
+printing diff
+[[ 4.00945568]]
+[[ 15.5685873]]
+printing diff
+[[-6.84774303]]
+[[ 14.77754498]]
+printing diff
+[[-4.9489975]]
+[[ 15.01583004]]
+printing diff
+[[ 13.03094387]]
+[[ 14.31976032]]
+printing diff
+[[-10.63170338]]
+[[ 13.69285488]]
+printing diff
+[[ 4.75526142]]
+[[ 13.25093842]]
+printing diff
+[[-1.97455978]]
+[[ 14.64124298]]
+printing diff
+[[ 3.21224785]]
+[[ 13.93673706]]
+printing diff
+[[-5.94645214]]
+[[ 12.62553883]]
+printing diff
+[[ 4.69752216]]
+[[ 12.23668385]]
+printing diff
+[[-6.14184761]]
+[[ 11.71435833]]
+printing diff
+[[ 13.94395447]]
+[[ 12.55966568]]
+printing diff
+[[-14.09879398]]
+[[ 12.28443432]]
+printing diff
+[[-0.86489058]]
+[[ 12.08389854]]
+printing diff
+[[ 3.71879911]]
+[[ 12.53785324]]
+printing diff
+[[-1.09036064]]
+[[ 13.05446815]]
+printing diff
+[[ 4.65116882]]
+[[ 12.70727634]]
+printing diff
+[[ 3.06551456]]
+[[ 13.21902752]]
+printing diff
+[[-5.1381731]]
+[[ 12.9533577]]
+printing diff
+[[-3.2602396]]
+[[ 13.42802048]]
+printing diff
+[[-1.67864227]]
+[[ 13.38495159]]
+printing diff
+[[ 1.88273716]]
+[[ 12.80605125]]
+printing diff
+[[ 1.15466785]]
+[[ 13.44800186]]
+printing diff
+[[-3.01842117]]
+[[ 12.93592167]]
+printing diff
+[[ 9.62689209]]
+[[ 13.85458088]]
+printing diff
+[[ 3.26804733]]
+[[ 14.60042763]]
+printing diff
+[[ 5.8132782]]
+[[ 15.38186264]]
+printing diff
+[[-14.00421333]]
+[[ 12.99723625]]
+printing diff
+[[ 4.75094414]]
+[[ 12.55608463]]
+printing diff
+[[-11.07889462]]
+[[ 12.80626297]]
+printing diff
+[[ 0.85938883]]
+[[ 12.42415142]]
+printing diff
+[[-0.09261751]]
+[[ 11.97131157]]
+printing diff
+[[-0.20325279]]
+[[ 11.9366293]]
+printing diff
+[[-2.42730236]]
+[[ 11.35991955]]
+printing diff
+[[ 5.3780489]]
+[[ 10.81418133]]
+printing diff
+[[-1.85341072]]
+[[ 10.4321413]]
+printing diff
+[[ 0.76817989]]
+[[ 10.03221512]]
+printing diff
+[[-1.31172466]]
+[[ 10.27987385]]
+printing diff
+[[ 0.02721834]]
+[[ 10.15874004]]
+printing diff
+[[-0.88562965]]
+[[ 10.61497498]]
+printing diff
+[[-1.20719671]]
+[[ 10.4394846]]
+printing diff
+[[ 0.36655474]]
+[[ 10.64040565]]
+printing diff
+[[ 1.85612679]]
+[[ 10.69378471]]
+printing diff
+[[ 3.30711031]]
+[[ 11.20995522]]
+printing diff
+[[ 1.13566494]]
+[[ 11.85684395]]
+printing diff
+[[-0.79955578]]
+[[ 11.74218845]]
+printing diff
+[[-1.53912449]]
+[[ 11.63090324]]
+printing diff
+[[-0.77834511]]
+[[ 11.55209255]]
+printing diff
+[[-2.1371212]]
+[[ 11.25510216]]
+printing diff
+[[-0.92136812]]
+[[ 11.81319809]]
+printing diff
+[[ 3.77125216]]
+[[ 11.88294697]]
+printing diff
+[[-3.99871826]]
+[[ 12.04881191]]
+printing diff
+[[ 1.3895402]]
+[[ 12.74515057]]
+printing diff
+[[ 8.11639023]]
+[[ 12.37614155]]
+printing diff
+[[ 1.35157108]]
+[[ 12.86693954]]
+printing diff
+[[-5.15967941]]
+[[ 12.43084335]]
+printing diff
+[[-4.5683527]]
+[[ 11.53216457]]
+printing diff
+[[-1.62959146]]
+[[ 11.15621662]]
+printing diff
+[[ 2.07446861]]
+[[ 11.10639095]]
+printing diff
+[[ 0.73649502]]
+[[ 11.36473083]]
+printing diff
+[[ 1.05275679]]
+[[ 11.5375042]]
+printing diff
+[[ 0.59321976]]
+[[ 12.5808239]]
+printing diff
+[[ 5.14681721]]
+[[ 12.91277313]]
+printing diff
+[[-0.70070744]]
+[[ 12.43890285]]
+printing diff
+[[-1.43592358]]
+[[ 13.07077122]]
+printing diff
+[[ 0.57169151]]
+[[ 13.15120316]]
+printing diff
+[[-3.50103092]]
+[[ 11.89682961]]
+printing diff
+[[-2.39158154]]
+[[ 11.08606815]]
+printing diff
+[[-1.83241129]]
+[[ 11.03909492]]
+printing diff
+[[-0.12440968]]
+[[ 11.10389709]]
+printing diff
+[[ 0.81039572]]
+[[ 11.32807159]]
+printing diff
+[[-2.19924593]]
+[[ 11.91624546]]
+printing diff
+[[ 0.12359762]]
+[[ 12.78650951]]
+printing diff
+[[ 4.7671957]]
+[[ 12.33762074]]
+printing diff
+[[-0.34602928]]
+[[ 11.70704651]]
+printing diff
+[[ 7.4899683]]
+[[ 12.71998215]]
+printing diff
+[[-4.61689281]]
+[[ 12.86283398]]
+printing diff
+[[-1.2744503]]
+[[ 12.19306469]]
+printing diff
+[[-4.38673401]]
+[[ 13.16243935]]
+printing diff
+[[ 6.38767529]]
+[[ 12.82229328]]
+printing diff
+[[ 2.42490768]]
+[[ 12.73552513]]
+printing diff
+[[-3.14296913]]
+[[ 12.67843246]]
+printing diff
+[[ 4.10542297]]
+[[ 12.92416286]]
+printing diff
+[[-1.5705862]]
+[[ 12.90562534]]
+printing diff
+[[ 0.14147377]]
+[[ 13.0456934]]
+printing diff
+[[-1.29911995]]
+[[ 14.91679573]]
+printing diff
+[[-5.14396095]]
+[[ 13.3650465]]
+printing diff
+[[ 7.73759556]]
+[[ 13.30447197]]
+printing diff
+[[-2.41487217]]
+[[ 12.82559586]]
+printing diff
+[[-1.97555065]]
+[[ 12.94114399]]
+printing diff
+[[-0.19259739]]
+[[ 12.71386814]]
+printing diff
+[[ 0.59691811]]
+[[ 12.87925434]]
+printing diff
+[[ 6.90407562]]
+[[ 12.9941349]]
+printing diff
+[[ 0.34041023]]
+[[ 13.09778023]]
+printing diff
+[[-9.72669506]]
+[[ 13.26245594]]
+printing diff
+[[-3.65283775]]
+[[ 13.22193336]]
+printing diff
+[[ 0.31457376]]
+[[ 12.90402126]]
+printing diff
+[[ 0.32911062]]
+[[ 13.25806236]]
+printing diff
+[[-2.32123017]]
+[[ 13.45581818]]
+printing diff
+[[ 5.72769833]]
+[[ 13.16136742]]
+printing diff
+[[-4.77091742]]
+[[ 13.2682333]]
+printing diff
+[[ 4.88854265]]
+[[ 14.08422279]]
+printing diff
+[[ 4.43358135]]
+[[ 14.40162086]]
+printing diff
+[[ 7.57806587]]
+[[ 13.66046715]]
+printing diff
+[[ 2.04204178]]
+[[ 14.3719635]]
+printing diff
+[[ 1.33768654]]
+[[ 14.21936798]]
+printing diff
+[[-4.3503933]]
+[[ 14.13807392]]
+printing diff
+[[ 1.05167389]]
+[[ 13.84560299]]
+printing diff
+[[ 4.28120995]]
+[[ 13.51438618]]
+printing diff
+[[-20.56665421]]
+[[ 13.44944191]]
+printing diff
+[[ 9.51194763]]
+[[ 13.81229019]]
+printing diff
+[[-5.15731239]]
+[[ 14.37135506]]
+printing diff
+[[ 1.22060013]]
+[[ 14.01861954]]
+printing diff
+[[-0.9934597]]
+[[ 14.04643154]]
+printing diff
+[[ 1.63623428]]
+[[ 13.22053242]]
+printing diff
+[[-6.77909088]]
+[[ 13.35087299]]
+printing diff
+[[ 6.83351421]]
+[[ 13.74592686]]
+printing diff
+[[ 1.37833405]]
+[[ 13.3210144]]
+printing diff
+[[-2.21664047]]
+[[ 13.55414009]]
+printing diff
+[[ 5.01352978]]
+[[ 13.92383289]]
+printing diff
+[[-1.1133461]]
+[[ 13.99213696]]
+printing diff
+[[ 0.12281036]]
+[[ 13.9852314]]
+printing diff
+[[-3.14465809]]
+[[ 14.03388977]]
+printing diff
+[[-4.44134569]]
+[[ 14.16436005]]
+printing diff
+[[ 6.43666315]]
+[[ 14.4795351]]
+printing diff
+[[-1.45500469]]
+[[ 13.78159904]]
+printing diff
+[[ 4.60708237]]
+[[ 13.79860973]]
+printing diff
+[[-0.62208748]]
+[[ 13.76011848]]
+printing diff
+[[-0.4359045]]
+[[ 14.47970009]]
+printing diff
+[[-1.94818497]]
+[[ 14.42720318]]
+printing diff
+[[-2.11866951]]
+[[ 14.00069904]]
+printing diff
+[[-6.45669556]]
+[[ 14.06041241]]
+printing diff
+[[-0.03983402]]
+[[ 13.62852573]]
+printing diff
+[[-0.80199718]]
+[[ 13.59913349]]
+printing diff
+[[ 1.61166286]]
+[[ 13.7966013]]
+printing diff
+[[ 0.26435614]]
+[[ 13.9238596]]
+printing diff
+[[ 0.00591898]]
+[[ 14.2421999]]
+printing diff
+[[ 1.33289385]]
+[[ 14.53725433]]
+printing diff
+[[ 5.88377714]]
+[[ 14.15406322]]
+printing diff
+[[ 1.11253738]]
+[[ 13.75545979]]
+printing diff
+[[-3.12017822]]
+[[ 13.2176466]]
+printing diff
+[[-3.17209053]]
+[[ 13.60750103]]
+printing diff
+[[-4.87824678]]
+[[ 13.52059746]]
+printing diff
+[[-0.55623293]]
+[[ 13.25340748]]
+printing diff
+[[ 5.03436041]]
+[[ 13.59548378]]
+printing diff
+[[ 0.7774663]]
+[[ 13.66688156]]
+printing diff
+[[-0.12475014]]
+[[ 13.80110931]]
+printing diff
+[[ 8.70564556]]
+[[ 13.08360291]]
+printing diff
+[[-12.0675211]]
+[[ 13.03290653]]
+printing diff
+[[ 8.51127911]]
+[[ 13.20388222]]
+printing diff
+[[-6.06492186]]
+[[ 13.39803886]]
+printing diff
+[[ 5.54333162]]
+[[ 13.2189579]]
+printing diff
+[[-9.6720171]]
+[[ 12.71980286]]
+printing diff
+[[ 2.12409377]]
+[[ 12.52505112]]
+printing diff
+[[-0.38632011]]
+[[ 12.30265141]]
+printing diff
+[[ 1.6573081]]
+[[ 11.71036053]]
+printing diff
+[[ 0.01485968]]
+[[ 12.08620071]]
+printing diff
+[[ 0.00749826]]
+[[ 12.48922157]]
+printing diff
+[[ 10.36068058]]
+[[ 12.79515457]]
+printing diff
+[[-5.25452423]]
+[[ 12.13027763]]
+printing diff
+[[-1.01466656]]
+[[ 12.81884384]]
+printing diff
+[[ 2.97372437]]
+[[ 13.75433922]]
+printing diff
+[[-1.03047562]]
+[[ 13.50186443]]
+printing diff
+[[ 1.74772358]]
+[[ 13.80665112]]
+printing diff
+[[-1.07789993]]
+[[ 13.4280262]]
+printing diff
+[[-7.15420341]]
+[[ 13.6118784]]
+printing diff
+[[-0.77502251]]
+[[ 13.49339962]]
+printing diff
+[[-0.7546711]]
+[[ 13.43422222]]
+printing diff
+[[ 4.9966898]]
+[[ 12.85693836]]
+printing diff
+[[ 6.09830952]]
+[[ 14.27425861]]
+printing diff
+[[ 1.81044388]]
+[[ 14.23823643]]
+printing diff
+[[-10.72147751]]
+[[ 14.66200447]]
+printing diff
+[[-3.82527876]]
+[[ 14.02732658]]
+printing diff
+[[-0.31273413]]
+[[ 14.27768612]]
+printing diff
+[[ 0.48111248]]
+[[ 13.14281845]]
+printing diff
+[[ 8.26179886]]
+[[ 13.5244503]]
+printing diff
+[[ 2.46875191]]
+[[ 13.3878727]]
+printing diff
+[[ 0.08777046]]
+[[ 13.0642643]]
+printing diff
+[[-2.70745945]]
+[[ 13.52771473]]
+printing diff
+[[ 3.06146336]]
+[[ 13.79868984]]
+printing diff
+[[-4.26760864]]
+[[ 14.37229347]]
+printing diff
+[[ 1.36174297]]
+[[ 14.43832493]]
+printing diff
+[[-1.75088787]]
+[[ 15.12413788]]
+printing diff
+[[ 15.37680054]]
+[[ 14.37466145]]
+printing diff
+[[-2.85777283]]
+[[ 14.60383701]]
+printing diff
+[[-5.22405052]]
+[[ 14.76353359]]
+printing diff
+[[ 4.92202187]]
+[[ 15.29460621]]
+printing diff
+[[ 2.53444099]]
+[[ 15.51978493]]
+printing diff
+[[-3.02230453]]
+[[ 14.75823784]]
+printing diff
+[[-4.44798088]]
+[[ 14.56893063]]
+printing diff
+[[-13.4008007]]
+[[ 14.43048668]]
+printing diff
+[[-0.28499508]]
+[[ 14.37316227]]
+printing diff
+[[ 7.10574818]]
+[[ 13.64486313]]
+printing diff
+[[-1.16453934]]
+[[ 12.55588341]]
+printing diff
+[[ 1.28511333]]
+[[ 12.28879356]]
+printing diff
+[[-0.23867989]]
+[[ 11.14707851]]
+printing diff
+[[-1.50712681]]
+[[ 10.67247963]]
+printing diff
+[[ 5.90006828]]
+[[ 13.87072945]]
+printing diff
+[[-2.63829517]]
+[[ 14.28348446]]
+printing diff
+[[ 0.42151928]]
+[[ 13.44507885]]
+printing diff
+[[ 0.21322823]]
+[[ 13.94220543]]
+printing diff
+[[ 1.52986717]]
+[[ 15.09567451]]
+printing diff
+[[ 4.91464233]]
+[[ 14.42263317]]
+printing diff
+[[-1.79273987]]
+[[ 14.52310467]]
+printing diff
+[[-2.63316154]]
+[[ 14.75556755]]
+printing diff
+[[-1.17961502]]
+[[ 14.19222832]]
+printing diff
+[[-1.58525848]]
+[[ 14.30368519]]
+printing diff
+[[-2.07962894]]
+[[ 14.14248466]]
+printing diff
+[[ 1.19887733]]
+[[ 14.2400589]]
+printing diff
+[[-0.89633274]]
+[[ 14.13109779]]
+printing diff
+[[ 0.19915676]]
+[[ 13.84578228]]
+printing diff
+[[ 1.48375034]]
+[[ 13.93279552]]
+printing diff
+[[ 2.31470299]]
+[[ 15.07962799]]
+printing diff
+[[ 2.36222649]]
+[[ 15.02595711]]
+printing diff
+[[-0.61175346]]
+[[ 14.88265038]]
+printing diff
+[[ 2.00926208]]
+[[ 13.4817152]]
+printing diff
+[[-3.63446903]]
+[[ 14.23317337]]
+printing diff
+[[ 0.40051556]]
+[[ 13.58568668]]
+printing diff
+[[ 1.29443932]]
+[[ 13.28741074]]
+printing diff
+[[ 4.25742912]]
+[[ 13.45642281]]
+printing diff
+[[-5.66682148]]
+[[ 13.09994793]]
+printing diff
+[[-0.41015816]]
+[[ 13.02935696]]
+printing diff
+[[-2.94299698]]
+[[ 13.13577557]]
+printing diff
+[[-0.63412952]]
+[[ 13.04647255]]
+printing diff
+[[-1.30839729]]
+[[ 12.65537262]]
+printing diff
+[[-2.6140027]]
+[[ 12.77216339]]
+printing diff
+[[-2.58566952]]
+[[ 13.04267979]]
+printing diff
+[[ 3.85775709]]
+[[ 12.77270031]]
+printing diff
+[[ 2.94567776]]
+[[ 13.30438423]]
+printing diff
+[[-4.20259428]]
+[[ 13.04646778]]
+printing diff
+[[-0.08500338]]
+[[ 12.74562836]]
+printing diff
+[[-3.59981918]]
+[[ 13.17545414]]
+printing diff
+[[ 0.36357832]]
+[[ 13.13515568]]
+printing diff
+[[ 0.71389341]]
+[[ 12.44866085]]
+printing diff
+[[ 1.7595315]]
+[[ 11.13236332]]
+printing diff
+[[ 1.13469839]]
+[[ 11.21166801]]
+printing diff
+[[ 0.39584017]]
+[[ 12.47472382]]
+printing diff
+[[-0.3904767]]
+[[ 13.48569489]]
+printing diff
+[[-0.78212214]]
+[[ 13.51762486]]
+printing diff
+[[ 1.55388975]]
+[[ 13.85941887]]
+printing diff
+[[ 2.35590172]]
+[[ 14.6391716]]
+printing diff
+[[-5.10745335]]
+[[ 14.21785736]]
+printing diff
+[[ 0.59440088]]
+[[ 14.18050003]]
+printing diff
+[[ 3.43702745]]
+[[ 14.23429775]]
+printing diff
+[[ 5.16955471]]
+[[ 14.83189487]]
+printing diff
+[[-3.10214615]]
+[[ 15.2739439]]
+printing diff
+[[ 1.69374371]]
+[[ 14.95992088]]
+printing diff
+[[ 3.46447659]]
+[[ 15.31113815]]
+printing diff
+[[ 1.05349922]]
+[[ 14.81508064]]
+printing diff
+[[-2.13364697]]
+[[ 14.95578861]]
+printing diff
+[[ 3.98961163]]
+[[ 14.85220528]]
+printing diff
+[[-1.93859291]]
+[[ 14.70784569]]
+printing diff
+[[-0.3272419]]
+[[ 15.17568398]]
+printing diff
+[[ 4.43508911]]
+[[ 14.81348896]]
+printing diff
+[[-5.23068237]]
+[[ 14.64912987]]
+printing diff
+[[-4.17629242]]
+[[ 14.63823223]]
+printing diff
+[[ 3.15527153]]
+[[ 15.23461914]]
+printing diff
+[[-2.36789894]]
+[[ 14.66020107]]
+printing diff
+[[ 3.41108704]]
+[[ 14.67453098]]
+printing diff
+[[-5.00340748]]
+[[ 14.12538433]]
+printing diff
+[[-1.7988863]]
+[[ 14.02026939]]
+printing diff
+[[ 2.15061188]]
+[[ 14.358778]]
+printing diff
+[[-5.32940054]]
+[[ 15.3915987]]
+printing diff
+[[ 1.29432201]]
+[[ 14.76089764]]
+printing diff
+[[ 3.73961306]]
+[[ 14.91676331]]
+printing diff
+[[-0.89141369]]
+[[ 14.58063698]]
+printing diff
+[[ 1.84592628]]
+[[ 15.38078594]]
+printing diff
+[[-0.98318386]]
+[[ 15.03210831]]
+printing diff
+[[-1.40703201]]
+[[ 14.84337997]]
+printing diff
+[[ 0.20476913]]
+[[ 14.9527235]]
+printing diff
+[[ 7.77675819]]
+[[ 14.52718925]]
+printing diff
+[[-10.19839478]]
+[[ 14.08937359]]
+printing diff
+[[-2.65672112]]
+[[ 14.06549644]]
+printing diff
+[[ 2.1827836]]
+[[ 14.1142807]]
+printing diff
+[[ 2.29546547]]
+[[ 14.33429623]]
+printing diff
+[[-0.80948448]]
+[[ 14.10859585]]
+printing diff
+[[-5.24470282]]
+[[ 14.20253181]]
+printing diff
+[[ 0.2399056]]
+[[ 13.64302635]]
+printing diff
+[[-0.54870486]]
+[[ 14.03445435]]
+printing diff
+[[ 5.79404259]]
+[[ 13.91238689]]
+printing diff
+[[ 0.70222569]]
+[[ 14.11645126]]
+printing diff
+[[-0.04169941]]
+[[ 14.19214249]]
+printing diff
+[[ 4.59016705]]
+[[ 13.77678108]]
+printing diff
+[[-2.62965488]]
+[[ 13.58303356]]
+printing diff
+[[-0.95947075]]
+[[ 13.90499783]]
+printing diff
+[[-0.46391678]]
+[[ 14.21674442]]
+printing diff
+[[-0.45927906]]
+[[ 14.1670332]]
+printing diff
+[[-1.33378124]]
+[[ 14.62119198]]
+printing diff
+[[-2.22316074]]
+[[ 14.2389679]]
+printing diff
+[[ 1.10921669]]
+[[ 14.99217606]]
+printing diff
+[[ 0.06029415]]
+[[ 14.4600172]]
+printing diff
+[[-3.18378067]]
+[[ 13.22946739]]
+printing diff
+[[-0.26979733]]
+[[ 14.3842411]]
+printing diff
+[[ 2.2787776]]
+[[ 14.82986355]]
+printing diff
+[[-0.90991926]]
+[[ 14.61901283]]
+printing diff
+[[-0.18071699]]
+[[ 14.50823498]]
+printing diff
+[[ 12.09107399]]
+[[ 14.10183334]]
+printing diff
+[[-5.45989418]]
+[[ 14.30315971]]
+printing diff
+[[-4.36864758]]
+[[ 14.56911945]]
+printing diff
+[[ 1.33990097]]
+[[ 14.45816803]]
+printing diff
+[[-2.78970289]]
+[[ 14.02050209]]
+printing diff
+[[ 6.17550802]]
+[[ 14.36233234]]
+printing diff
+[[ 3.64390659]]
+[[ 14.86771202]]
+printing diff
+[[ 0.24001122]]
+[[ 14.97728539]]
+printing diff
+[[-3.15505695]]
+[[ 13.93901825]]
+printing diff
+[[-0.24063492]]
+[[ 14.67665386]]
+printing diff
+[[-0.18676949]]
+[[ 14.46345043]]
+printing diff
+[[-1.19229507]]
+[[ 15.09487629]]
+printing diff
+[[ 1.14419937]]
+[[ 13.94928265]]
+printing diff
+[[-1.61383438]]
+[[ 13.53009319]]
+printing diff
+[[ 2.05070114]]
+[[ 14.14325619]]
+printing diff
+[[-2.12790871]]
+[[ 12.81612587]]
+printing diff
+[[-1.37320423]]
+[[ 13.07715893]]
+printing diff
+[[ 5.18819141]]
+[[ 13.50006008]]
+printing diff
+[[-5.81570625]]
+[[ 13.5934763]]
+printing diff
+[[ 4.29070568]]
+[[ 14.07794094]]
+printing diff
+[[-5.22823524]]
+[[ 13.41403961]]
+printing diff
+[[ 3.65142632]]
+[[ 12.5127697]]
+printing diff
+[[-2.27161598]]
+[[ 12.22067165]]
+printing diff
+[[-1.05588245]]
+[[ 13.46568108]]
+printing diff
+[[-2.68237209]]
+[[ 14.02923298]]
+printing diff
+[[ 1.59540939]]
+[[ 13.44068813]]
+printing diff
+[[-0.94881916]]
+[[ 12.21691322]]
+printing diff
+[[-0.56385565]]
+[[ 12.22268105]]
+printing diff
+[[ 2.31032753]]
+[[ 12.80085087]]
+printing diff
+[[ 6.16208887]]
+[[ 12.92498016]]
+printing diff
+[[-2.39738655]]
+[[ 13.5749073]]
+printing diff
+[[-3.72146893]]
+[[ 14.21585083]]
+printing diff
+[[-0.80313158]]
+[[ 14.21901321]]
+printing diff
+[[ 6.45187807]]
+[[ 14.27529907]]
+printing diff
+[[-4.82507038]]
+[[ 14.00322628]]
+printing diff
+[[ 4.26042461]]
+[[ 13.66135311]]
+printing diff
+[[-2.19605446]]
+[[ 13.39951801]]
+printing diff
+[[-2.29001427]]
+[[ 13.17787361]]
+printing diff
+[[-1.47599697]]
+[[ 13.42342091]]
+printing diff
+[[ 0.659338]]
+[[ 13.18237686]]
+printing diff
+[[ 4.17132854]]
+[[ 12.07414627]]
+printing diff
+[[-6.95798016]]
+[[ 11.7901125]]
+printing diff
+[[-0.41105318]]
+[[ 12.8449955]]
+printing diff
+[[ 7.41122103]]
+[[ 13.56638908]]
+printing diff
+[[-0.19882584]]
+[[ 13.09556675]]
+printing diff
+[[ 6.13702393]]
+[[ 13.88678646]]
+printing diff
+[[-4.82412052]]
+[[ 13.81295776]]
+printing diff
+[[-2.08325577]]
+[[ 13.36645126]]
+printing diff
+[[ 2.83785629]]
+[[ 13.40750217]]
+printing diff
+[[-1.41391087]]
+[[ 13.76891422]]
+printing diff
+[[ 5.02075768]]
+[[ 14.2550602]]
+printing diff
+[[-7.98131657]]
+[[ 14.48836708]]
+printing diff
+[[ 2.90121746]]
+[[ 14.34834003]]
+printing diff
+[[ 0.05208683]]
+[[ 12.95264721]]
+printing diff
+[[-1.83821106]]
+[[ 10.97948456]]
+printing diff
+[[-2.47561312]]
+[[ 10.45990372]]
+printing diff
+[[-0.71428108]]
+[[ 11.46826267]]
+printing diff
+[[ 5.81722212]]
+[[ 13.09058189]]
+printing diff
+[[ 2.23811817]]
+[[ 13.99311829]]
+printing diff
+[[ 3.12077999]]
+[[ 14.21569443]]
+printing diff
+[[-0.72561455]]
+[[ 13.47158051]]
+printing diff
+[[-12.05547428]]
+[[ 13.12516785]]
+printing diff
+[[ 3.87215519]]
+[[ 13.99602318]]
+printing diff
+[[ 1.21505833]]
+[[ 13.70435905]]
+printing diff
+[[-0.04187298]]
+[[ 13.16449451]]
+printing diff
+[[-0.90143776]]
+[[ 13.82897377]]
+printing diff
+[[ 12.6004467]]
+[[ 14.3137331]]
+printing diff
+[[ 0.39320564]]
+[[ 14.3225565]]
+printing diff
+[[-3.80629921]]
+[[ 13.65360546]]
+printing diff
+[[ 2.35486984]]
+[[ 14.07970238]]
+printing diff
+[[-0.46688652]]
+[[ 13.896842]]
+printing diff
+[[-1.99132729]]
+[[ 13.63251305]]
+printing diff
+[[ 1.68631935]]
+[[ 13.58197784]]
+printing diff
+[[-0.86456871]]
+[[ 13.97903728]]
+printing diff
+[[-13.16258335]]
+[[ 13.66264629]]
+printing diff
+[[ 7.51653481]]
+[[ 13.92264175]]
+printing diff
+[[ 0.65361691]]
+[[ 13.99738979]]
+printing diff
+[[ 3.4188118]]
+[[ 13.69755173]]
+printing diff
+[[-1.03240204]]
+[[ 13.31478024]]
+printing diff
+[[-6.19248962]]
+[[ 12.77484798]]
+printing diff
+[[-0.35715103]]
+[[ 12.29748535]]
+printing diff
+[[-2.53255177]]
+[[ 12.3149662]]
+printing diff
+[[ 10.31995296]]
+[[ 12.53577805]]
+printing diff
+[[-5.57336903]]
+[[ 13.05347157]]
+printing diff
+[[ 2.88754559]]
+max epoch reached. break the loop:
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcuda.so locally
+I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally
+Traceback (most recent call last):
+  File "/home/yutaro/parity_experiment/results/2016-07-16/../../src/plot_table.py", line 31, in <module>
+    plot_out = plt.plot(range(len(plot_list[i])), plot_list[i] ,'ro',alpha=0.3)
+  File "/usr/local/lib/python3.4/dist-packages/matplotlib/pyplot.py", line 3154, in plot
+    ret = ax.plot(*args, **kwargs)
+  File "/usr/local/lib/python3.4/dist-packages/matplotlib/__init__.py", line 1812, in inner
+    return func(ax, *args, **kwargs)
+  File "/usr/local/lib/python3.4/dist-packages/matplotlib/axes/_axes.py", line 1424, in plot
+    for line in self._get_lines(*args, **kwargs):
+  File "/usr/local/lib/python3.4/dist-packages/matplotlib/axes/_base.py", line 386, in _grab_next_args
+    for seg in self._plot_args(remaining, kwargs):
+  File "/usr/local/lib/python3.4/dist-packages/matplotlib/axes/_base.py", line 364, in _plot_args
+    x, y = self._xy_from_xy(x, y)
+  File "/usr/local/lib/python3.4/dist-packages/matplotlib/axes/_base.py", line 225, in _xy_from_xy
+    raise ValueError("x and y can be no greater than 2-D")
+ValueError: x and y can be no greater than 2-D

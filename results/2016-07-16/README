@@ -1,0 +1,18 @@
+[1] 14832
+Did 12 experiments. Will see the results tomorrow morning.
+- GREAT. The ones with "total" instead of "single" seem working very well.
+- (from Sigmoid-2016-07-14-23:00:19 and thereafter)
+- The loss actually got down to 0. 
+- But I should check if the acc_list thing is working or not. 
+
+[1] 17900 Sigmoid-2016-07-15-10:05:00
+Getting the good model to check if acc_list makes sense.
+- The log-diff got trapped at the beginning and halted the experiment.
+
+[1] 18149 Sigmoid-2016-07-15-10:23:24
+Added the value-clipping to the cross-entropy loss but not working.
+- The loss plot looks good (no inf anymore) but acc_list looks still wried.
+- So I need to check this.
+
+[1] 22592 Sigmoid-2016-07-16-17:52:10
+Used uniform sampling data generation.

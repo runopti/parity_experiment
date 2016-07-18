@@ -46,3 +46,46 @@ Hope this model is generaizable to longer sequences.
 [1] 9788
 maxepoch = 250. The same setting otherwise as above.
 - Looks good. Now let's test this on long sequences.
+-- The model didn't generalize. I need to train the model that generalizes well.
+-- which means I need to investigate the cause of the loss explosion.
+
+[1] 10542 Sigmoid-2016-07-14-16:26:04
+sigmoid test. maxepoch=250. This might resolve the problem. 
+
+[1] 10753
+Increased maxepoch=800. Increased hiddnunits from 5 to 10.
+- The loss sort of scattered towards the end. Why....
+
+[1] 11114 Sigmoid-2016-07-14-17:20:03
+Decreased maxepoch=500. Decreased hiddenunits from 10 to 1. 
+My hypothesis is that the scattering loss occurs due to the large hidden states.
+- The loss didn't change at all.
+
+[1] 11659 Sigmoid-2016-07-14-17:45:21
+IMPORTANT: the last three Sigmoid-** experiments are wrong because I was using the old script (rnn_simple.py)
+instead of rnn_simple_sigmoid.py
+- The loss didn't change at all. I should increase the hidunits from 1 to 5?
+
+[1] 12322 Sigmoid-2016-07-14-18:02:17
+Increased hidunits from 1 to 5. 
+- The loss is still around 0.63. 
+
+[1] 13146 Sigmoid-2016-07-14-18:24:28
+Increased learning_rate from 0.001 to 0.1. 
+- The loss didn't change at all. 
+
+[1] 13555 Sigmoid-2016-07-14-18:39:10
+Learning rate schedule (divide 10 at epoch 350 based on the observation from 
+Sigmoid-2016-07-14-18:02:17 's total_loss plot.
+- The loss plot looks worse than Sigmoid-2016-07-14-18:02:17....
+
+[1] 13887
+LearningRateSchedule same as above. Increased hiduni from 5 to 30.
+- The loss got down to 0.2-0.3, which is surprising, but stopped because of inf.
+
+[1] 14191
+Now hiduni 50.
+-even better / faster but again the loss went to inf. Learning rate might be too high.
+
+[1] 14469
+Learning rate reduction by 10 after 150epoch.
