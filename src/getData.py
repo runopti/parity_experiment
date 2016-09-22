@@ -2,6 +2,7 @@ import numpy as np
 import math
 np.random.seed(0)
 
+## I changed [0,1] to [-1,1] on 7/22
 def createTargetData(digit_list):
     """ generate len(digit_list) vector, whose i th element is the
     corresponding parity upto the ith element of the input."""
@@ -43,12 +44,16 @@ def createRandomData(n, n_test, seq_len):
     for _ in range(n):
         random_int = np.random.randint(math.pow(2,seq_len)) # sample a number from [1, 2^seq_len]
         store_int_list.append(random_int)
-        data_input_list.append(np.array(list(bin(random_int)[2:].zfill(seq_len))).astype(float)) # convert this into binary digit
+        binary_digits = np.array(list(bin(random_int)[2:].zfill(seq_len))).astype(float)
+        #binary_digits[binary_digits==0] = -1.0
+        data_input_list.append(binary_digits) # convert this into binary digit
     for _ in range(n_test):
         random_int = store_int_list[0] # just to pass the first test in while
         while random_int in store_int_list:
             random_int = np.random.randint(math.pow(2,seq_len))
-        data_test_list.append(np.array(list(bin(random_int)[2:].zfill(seq_len))).astype(float))
+        binary_digits = np.array(list(bin(random_int)[2:].zfill(seq_len))).astype(float)
+        #binary_digits[binary_digits==0] = -1.0
+        data_test_list.append(binary_digits)
         
     return data_input_list, data_test_list
 
